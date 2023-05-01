@@ -20,9 +20,10 @@ public class App {
         String fromCurrency = "INR";
         String toCurrency = "USD";
         int amount = 100;
+        String apiUrl = "https://api.exchangerate-api.com/v4/latest/INR";
 //        String apiKey = "veOtmUFgkaTyhSlCjbdK7nv9z1taN3X0";
 //        String apiUrl = "https://api.apilayer.com/exchangerates_data/convert?to=" + toCurrency + "&from=" + fromCurrency + "&amount=" + amount;
-        String apiUrl = "https://cat-fact.herokuapp.com/facts";
+//        String apiUrl = "https://cat-fact.herokuapp.com/facts";
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 //        connection.setRequestProperty("apikey", apiKey);
@@ -46,8 +47,8 @@ public class App {
             scanner.close();
 
             JSONParser parse = new JSONParser();
-            JSONArray dataObject = (JSONArray) parse.parse(String.valueOf(information));
-            System.out.println(((JSONObject)(dataObject.get(0))).get("text"));
+            JSONObject dataObject = (JSONObject) parse.parse(String.valueOf(information));
+            System.out.println(dataObject);
         }
         System.out.println("Hello World!");
     }
